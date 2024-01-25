@@ -2,7 +2,10 @@
 set -eu
 set -o pipefail
 
-source setup-venv.sh
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd ..
+
+source scripts/setup-venv.sh
 
 unzip_and_reformat() {
 	gzip -dfk $1

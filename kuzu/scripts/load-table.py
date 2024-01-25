@@ -8,7 +8,7 @@ import sys
 tableName, tableType = sys.argv[1:3]
 csvFiles = sys.argv[3:]
 
-db = kuzu.Database('../database')
+db = kuzu.Database('database')
 conn = kuzu.Connection(db)
 
 csvFiles = str(csvFiles).replace('\'','\"')

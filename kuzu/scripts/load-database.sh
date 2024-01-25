@@ -2,14 +2,17 @@
 set -eu
 set -o pipefail
 
-source setup-venv.sh
+cd "$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
+cd ..
 
-./clear-database.sh
+source scripts/setup-venv.sh
 
-python3 load-schema.py
+scripts/clear-database.sh
+
+python3 scripts/load-schema.py
 
 loadTable() { # usage: loadTable <tablename> <tabletype> <loc>
-	python3 load-table.py $1 $2 $(find ${KUZU_CSV_DIR}/initial_snapshot/${3} -type f -name *.csv)
+	python3 scripts/load-table.py $1 $2 $(find ${KUZU_CSV_DIR}/initial_snapshot/${3} -type f -name *.csv)
 }
 
 # nodes
