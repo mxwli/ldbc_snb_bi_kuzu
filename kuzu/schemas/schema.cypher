@@ -1,7 +1,7 @@
 CREATE NODE TABLE Comment (creationDate  TIMESTAMP, id INT64, locationIP STRING, browserUsed STRING, content STRING, length INT64, PRIMARY KEY(id))
 CREATE NODE TABLE Forum (creationDate  TIMESTAMP, id INT64, title STRING, PRIMARY KEY(id))
 CREATE NODE TABLE Organisation (id INT64, type STRING, name STRING, url STRING, PRIMARY KEY(id))
-CREATE NODE TABLE Person (creationDate TIMESTAMP, id INT64, firstName STRING, lastName STRING, gender STRING, birthday DATE, locationIP STRING, browserUsed STRING, speaks STRING, email STRING, PRIMARY KEY(id))
+CREATE NODE TABLE Person (creationDate TIMESTAMP, id INT64, firstName STRING, lastName STRING, gender STRING, birthday DATE, locationIP STRING, browserUsed STRING, speaks STRING[], email STRING[], PRIMARY KEY(id))
 CREATE NODE TABLE Place (id INT64, name STRING, url STRING, type STRING, PRIMARY KEY(id))
 CREATE NODE TABLE Post (creationDate TIMESTAMP, id INT64, imageFile STRING, locationIP STRING, browserUsed STRING, language STRING, content STRING, length INT64, PRIMARY KEY(id))
 CREATE NODE TABLE TagClass (id INT64, name STRING, url STRING, PRIMARY KEY(id))
