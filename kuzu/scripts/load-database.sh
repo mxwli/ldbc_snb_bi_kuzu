@@ -9,6 +9,8 @@ source scripts/setup-venv.sh
 
 scripts/clear-database.sh
 
+start=`date +%s`
+
 python3 scripts/load-schema.py
 
 loadTable() { # usage: loadTable <tablename> <tabletype> <loc>
@@ -50,3 +52,5 @@ loadTable IS_LOCATED_IN_Post_Place REL dynamic/Post_isLocatedIn_Country
 loadTable STUDY_AT REL dynamic/Person_studyAt_University
 loadTable WORK_AT REL dynamic/Person_workAt_Company
 
+end=`date +%s`
+echo Execution time was `expr $end - $start` seconds.
