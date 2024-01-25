@@ -1,1 +1,1 @@
-FROM Comment TO Place, creationDate  TIMESTAMP
+FROM Comment TO Place, creationDate  TIMESTAMP, MANY_ONE

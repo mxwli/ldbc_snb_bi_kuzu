@@ -1,1 +1,1 @@
-FROM Forum TO Person, creationDate  TIMESTAMP
+FROM Forum TO Person, creationDate  TIMESTAMP, MANY_MANY

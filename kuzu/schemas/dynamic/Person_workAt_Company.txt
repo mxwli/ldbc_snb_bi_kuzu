@@ -1,1 +1,1 @@
-FROM Person TO Organisation, creationDate TIMESTAMP, workFrom INT64
+FROM Person TO Organisation, creationDate TIMESTAMP, workFrom INT64, MANY_MANY

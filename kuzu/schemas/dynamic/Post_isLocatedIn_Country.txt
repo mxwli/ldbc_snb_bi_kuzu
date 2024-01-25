@@ -1,1 +1,1 @@
-FROM Post TO Place, creationDate TIMESTAMP
+FROM Post TO Place, creationDate TIMESTAMP, MANY_ONE

@@ -1,1 +1,1 @@
-FROM Person TO Comment, creationDate TIMESTAMP
+FROM Person TO Comment, creationDate TIMESTAMP, MANY_MANY

@@ -1,1 +1,1 @@
-FROM Post TO Tag, creationDate TIMESTAMP
+FROM Post TO Tag, creationDate TIMESTAMP, MANY_MANY

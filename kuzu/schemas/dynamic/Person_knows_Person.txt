@@ -1,1 +1,1 @@
-FROM Person TO Person, creationDate TIMESTAMP
+FROM Person TO Person, creationDate TIMESTAMP, MANY_MANY

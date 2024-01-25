@@ -1,1 +1,1 @@
-FROM Place TO Place
+FROM Place TO Place, MANY_ONE

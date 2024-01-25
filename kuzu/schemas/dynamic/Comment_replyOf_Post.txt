@@ -1,1 +1,1 @@
-FROM Comment TO Post, creationDate  TIMESTAMP
+FROM Comment TO Post, creationDate  TIMESTAMP, MANY_ONE

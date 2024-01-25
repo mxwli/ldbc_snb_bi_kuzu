@@ -1,1 +1,1 @@
-FROM Person TO Post, creationDate TIMESTAMP
+FROM Person TO Post, creationDate TIMESTAMP, MANY_MANY

@@ -1,1 +1,1 @@
-FROM TagClass TO TagClass
+FROM TagClass TO TagClass, MANY_ONE

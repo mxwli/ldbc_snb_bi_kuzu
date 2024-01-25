@@ -1,1 +1,1 @@
-FROM Person TO Tag, creationDate TIMESTAMP
+FROM Person TO Tag, creationDate TIMESTAMP, MANY_MANY
