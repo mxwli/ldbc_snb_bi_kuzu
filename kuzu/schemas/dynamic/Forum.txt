@@ -1,0 +1,1 @@
+creationDate  TIMESTAMP, id INT64, title STRING, PRIMARY KEY(id)

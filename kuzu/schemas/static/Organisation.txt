@@ -1,0 +1,1 @@
+id INT64, type STRING, name STRING, url STRING, PRIMARY KEY(id)

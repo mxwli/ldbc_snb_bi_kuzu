@@ -1,0 +1,1 @@
+creationDate TIMESTAMP, id INT64, firstName STRING, lastName STRING, gender STRING, birthday DATE, locationIP STRING, browserUsed STRING, speaks STRING, email STRING, PRIMARY KEY(id)

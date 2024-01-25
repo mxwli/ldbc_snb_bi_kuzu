@@ -1,0 +1,1 @@
+creationDate TIMESTAMP, id INT64, imageFile STRING, locationIP STRING, browserUsed STRING, language STRING, content STRING, length INT64, PRIMARY KEY(id)

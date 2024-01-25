@@ -1,0 +1,1 @@
+FROM Comment TO Tag, creationDate  TIMESTAMP

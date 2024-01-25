@@ -1,0 +1,1 @@
+creationDate  TIMESTAMP, id INT64, locationIP STRING, browserUsed STRING, content STRING, length INT64, PRIMARY KEY(id)

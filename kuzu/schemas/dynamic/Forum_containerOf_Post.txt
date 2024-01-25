@@ -1,0 +1,1 @@
+FROM Forum TO Post, creationDate  TIMESTAMP
