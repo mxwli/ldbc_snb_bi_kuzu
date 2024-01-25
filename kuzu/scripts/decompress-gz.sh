@@ -9,7 +9,7 @@ source scripts/setup-venv.sh
 
 unzip_and_reformat() {
 	gzip -dfk $1
-	python3 reformatcsv.py "${1%.csv.gz}.csv"
+	python3 scripts/reformatcsv.py "${1%.csv.gz}.csv"
 	echo "decompressed and reformatted $1"
 }
 export -f unzip_and_reformat
