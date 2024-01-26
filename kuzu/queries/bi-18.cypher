@@ -1,7 +1,3 @@
-// Q18. Friend recommendation
-/*
-:params { tag: 'Frank_Sinatra' }
-*/
 MATCH (tag:Tag {name: $tag})<-[:HAS_INTEREST]-(person1:Person)-[:KNOWS]-(mutualFriend:Person)-[:KNOWS]-(person2:Person)-[:HAS_INTEREST]->(tag)
 WHERE person1 <> person2
   AND NOT (person1)-[:KNOWS]-(person2)

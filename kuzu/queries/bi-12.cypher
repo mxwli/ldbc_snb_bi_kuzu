@@ -1,11 +1,3 @@
-// Q12. How many persons have a given number of posts
-/*
-:params {
-  startDate: datetime('2010-07-22'),
-  lengthThreshold: 20,
-  languages: ['ar', 'hu']
-}
-*/
 MATCH (person:Person)
 OPTIONAL MATCH (person)<-[:HAS_CREATOR]-(message:Post:Comment)-[:REPLY_OF*0..]->(post:Post)
 WHERE message.content IS NOT NULL

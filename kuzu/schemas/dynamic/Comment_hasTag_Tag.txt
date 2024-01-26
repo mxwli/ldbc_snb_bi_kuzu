@@ -1,1 +1,0 @@
-FROM Comment TO Tag, creationDate  TIMESTAMP, MANY_MANY

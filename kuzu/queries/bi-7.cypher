@@ -1,7 +1,3 @@
-// Q7. Related Topics
-/*
-:params { tag: 'Enrique_Iglesias' }
-*/
 MATCH
   (tag:Tag {name: $tag})<-[:HAS_TAG]-(message:Post:Comment),
   (message)<-[:REPLY_OF]-(comment:Comment)-[:HAS_TAG]->(relatedTag:Tag)

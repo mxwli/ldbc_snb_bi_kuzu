@@ -1,7 +1,3 @@
-// Q9. Top thread initiators
-/*
-:params { startDate: datetime('2011-10-01'), endDate: datetime('2011-10-15') }
-*/
 MATCH (person:Person)<-[:HAS_CREATOR]-(post:Post)<-[:REPLY_OF*0..]-(reply:Post:Comment)
 WHERE  post.creationDate >= $startDate
   AND  post.creationDate <= $endDate

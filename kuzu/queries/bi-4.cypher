@@ -1,7 +1,3 @@
-// Q4. Top message creators in a country
-/*
-:params { date: datetime('2010-01-29') }
-*/
 MATCH (country:Place {type:"Country"})<-[:IS_PART_OF]-(:Place {type: "City"})<-[:IS_LOCATED_IN]-(person:Person)<-[:HAS_MEMBER]-(forum:Forum)
 WHERE forum.creationDate > $date
 WITH country, forum, count(person) AS numberOfMembers
@@ -19,8 +15,8 @@ CALL {
   WHERE topForum2 IN topForums
   RETURN person, count(DISTINCT message) AS messageCount
 UNION ALL
-  // Ensure that people who are members of top forums but have 0 messages are also returned.
-  // To this end, we return each person with a 0 messageCount
+  
+  
   WITH topForums
   UNWIND topForums AS topForum1
   MATCH (person:Person)<-[:HAS_MEMBER]-(topForum1:Forum)

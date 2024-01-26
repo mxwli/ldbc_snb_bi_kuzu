@@ -1,1 +1,0 @@
-FROM Organisation TO Place, MANY_ONE

@@ -1,7 +1,3 @@
-// Q3. Popular topics in a country
-/*
-:params { tagClass: 'MusicalArtist', country: 'Burma' }
-*/
 MATCH
   (:Place {type: "Country", name: $country})<-[:IS_PART_OF]-(:Place {type: "City"})<-[:IS_LOCATED_IN]-
   (person:Person)<-[:HAS_MODERATOR]-(forum:Forum)-[:CONTAINER_OF]->
@@ -11,7 +7,7 @@ RETURN
   forum.title,
   forum.creationDate,
   person.id,
-  count(DISTINCT message) AS messageCount
+  count(DISTINCT message.id) AS messageCount
 ORDER BY
   messageCount DESC,
   forum.id ASC

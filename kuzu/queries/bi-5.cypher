@@ -1,7 +1,3 @@
-// Q5. Most active Posters of a given Topic
-/*
-:params { tag: 'Abbas_I_of_Persia' }
-*/
 MATCH (tag:Tag {name: $tag})<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]->(person:Person)
 OPTIONAL MATCH (message)<-[likes:LIKES]-(:Person)
 WITH person, message, count(likes) AS likeCount

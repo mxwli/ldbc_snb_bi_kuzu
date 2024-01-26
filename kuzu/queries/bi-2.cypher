@@ -1,17 +1,13 @@
-// Q2. Tag evolution
-/*
-:params { date: datetime('2012-06-01'), tagClass: 'MusicalArtist' }
-*/
 MATCH (tag:Tag)-[:HAS_TYPE]->(:TagClass {name: $tagClass})
-// window 1
-OPTIONAL MATCH (message1:Message)-[:HAS_TAG]->(tag)
+
+OPTIONAL MATCH (message1:Post:Comment)-[:HAS_TAG]->(tag)
   WHERE $date <= message1.creationDate
-    AND message1.creationDate < $date + duration({days: 100})
+    AND message1.creationDate < $date + INTERVAL('100 DAYS')
 WITH tag, count(message1) AS countWindow1
-// window 2
-OPTIONAL MATCH (message2:Message)-[:HAS_TAG]->(tag)
-  WHERE $date + duration({days: 100}) <= message2.creationDate
-    AND message2.creationDate < $date + duration({days: 200})
+
+OPTIONAL MATCH (message2:Post:Comment)-[:HAS_TAG]->(tag)
+  WHERE $date + INTERVAL('100 DAYS') <= message2.creationDate
+    AND message2.creationDate < $date + INTERVAL('200 DAYS')
 WITH
   tag,
   countWindow1,

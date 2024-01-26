@@ -1,1 +1,0 @@
-FROM Forum TO Tag, creationDate  TIMESTAMP, MANY_MANY

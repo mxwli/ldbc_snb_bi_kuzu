@@ -1,1 +1,0 @@
-FROM Person TO Organisation, creationDate TIMESTAMP, classYear INT64, MANY_MANY

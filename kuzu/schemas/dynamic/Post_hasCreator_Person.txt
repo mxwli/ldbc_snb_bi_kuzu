@@ -1,1 +1,0 @@
-FROM Post TO Person, creationDate TIMESTAMP, MANY_ONE
