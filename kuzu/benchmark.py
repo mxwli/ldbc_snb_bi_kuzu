@@ -14,10 +14,12 @@ import argparse
 This file was taken from the prewritten neo4j benchmark, and was modified to fit Kuzu
 '''
 
-def run_batch_updates(connection, data_dir, batch_date, batch_type, insert_entities, delete_entities, insert_queries, delete_queries):
+def run_batch_updates(connection, data_dir, batch_date, batch_type, insert_entities, delete_entities, insert_queries, delete_queries, timings_file):
     batch_id = batch_date.strftime('%Y-%m-%d')
     batch_dir = f"batch_id={batch_id}"
     print(f"#################### {batch_dir} ####################")
+
+    start = time.time()
 
     print("## Inserts")
     for entity in insert_entities:
@@ -48,6 +50,10 @@ def run_batch_updates(connection, data_dir, batch_date, batch_type, insert_entit
             substituted_query = substituted_query.replace("$csv_file", csv_file)
             connection.execute(substituted_query)
             #run_update(connection, delete_queries[entity], batch_dir, csv_file)
+    
+    end = time.time()
+    duration = end - start
+    timings_file.write(f"Kuzu|{sf}|{batch_id}|{batch_type}|writes||{duration}\n")
 
 
 if __name__ == '__main__':
@@ -138,7 +144,7 @@ if __name__ == '__main__':
             if current_batch == 2:
                 start = time.time()
 
-            run_batch_updates(connection, data_dir, batch_date, batch_type, insert_entities, delete_entities, insert_queries, delete_queries)
+            run_batch_updates(connection, data_dir, batch_date, batch_type, insert_entities, delete_entities, insert_queries, delete_queries, timings_file)
             # run_precomputations(sf, query_variants, session, batch_date, batch_type, timings_file)
             # we are not doing queries involved with precomputations at the moment
             reads_time = run_queries(query_variants, parameter_csvs, connection, sf, batch_date, batch_type, test, pgtuning, timings_file, results_file)
