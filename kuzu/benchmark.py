@@ -61,7 +61,7 @@ if __name__ == '__main__':
 
     database = kuzu.Database('database/')
     connection = kuzu.Connection(database)
-    connection.set_query_timeout(100000) # 100 seconds
+    connection.set_query_timeout(100000)
 
     parser = argparse.ArgumentParser()
     parser.add_argument('--scale_factor', type=str, help='Scale factor', required=True)

@@ -39,7 +39,18 @@ def run_query(connection, query_num, query_variant, query_spec, query_parameters
     #full_query = re.sub(' +', ' ', query_spec.replace('\n', ' '))
     for key in query_parameters:
         full_query = full_query.replace('$'+key, str(query_parameters[key]))
-    results = connection.execute(full_query)
+    
+    results = None
+
+    try:
+        results = connection.execute(full_query)
+    except RuntimeError as ex:
+        end = time.time()
+        duration = end - start
+        print(f"Runtime Error caught! {ex}")
+        return ([f"Runtime Error: {ex}"], 'N/A')
+        
+
     resultsList = []
     while results.has_next():
         resultsList.append(results.get_next())
