@@ -7,7 +7,7 @@ RETURN
   forum.title,
   forum.creationDate,
   person.id,
-  count(DISTINCT message.id) AS messageCountW
+  count(DISTINCT message.id) AS messageCount
 ORDER BY
   messageCount DESC,
   forum.id ASC
