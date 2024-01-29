@@ -21,6 +21,7 @@ ORDER BY
   score DESC,
   person1.id ASC,
   person2.id ASC
+SKIP 0
 WITH city1, collect({score: score, person1Id: person1.id, person2Id: person2.id})[0] AS top
 RETURN
   top.person1Id,

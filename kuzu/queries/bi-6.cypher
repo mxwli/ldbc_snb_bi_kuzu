@@ -4,11 +4,8 @@ OPTIONAL MATCH (person2)<-[:HAS_CREATOR]-(message2:Post:Comment)<-[like:LIKES]-(
 RETURN
   person1.id,
   
-  count(DISTINCT like) AS authorityScore
+  count(DISTINCT id(like)) AS authorityScore
 ORDER BY
   authorityScore DESC,
   person1.id ASC
 LIMIT 100
-
-
-

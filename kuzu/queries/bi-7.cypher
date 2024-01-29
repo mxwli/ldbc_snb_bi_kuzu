@@ -4,7 +4,7 @@ MATCH
 WHERE NOT (comment)-[:HAS_TAG]->(tag)
 RETURN
   relatedTag.name,
-  count(DISTINCT comment) AS count
+  count(DISTINCT comment.id) AS count
 ORDER BY
   count DESC,
   relatedTag.name ASC

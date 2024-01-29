@@ -7,8 +7,8 @@ RETURN
   person.id,
   person.firstName,
   person.lastName,
-  count(DISTINCT post) AS threadCount,
-  count(DISTINCT reply) AS messageCount
+  count(DISTINCT post.id) AS threadCount,
+  count(DISTINCT reply.id) AS messageCount
 ORDER BY
   messageCount DESC,
   person.id ASC

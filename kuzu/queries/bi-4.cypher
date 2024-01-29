@@ -1,3 +1,5 @@
+// skip this for now: it contains
+// rather complicated subqueries and IN clauses
 MATCH (country:Place {type:"Country"})<-[:IS_PART_OF]-(:Place {type: "City"})<-[:IS_LOCATED_IN]-(person:Person)<-[:HAS_MEMBER]-(forum:Forum)
 WHERE forum.creationDate > $date
 WITH country, forum, count(person) AS numberOfMembers

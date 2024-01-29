@@ -7,7 +7,7 @@ RETURN
   forum.title,
   forum.creationDate,
   person.id,
-  count(DISTINCT message.id) AS messageCount
+  count(DISTINCT message.id) AS messageCount // is it valid to just swap in DISTINCT *.id? 
 ORDER BY
   messageCount DESC,
   forum.id ASC

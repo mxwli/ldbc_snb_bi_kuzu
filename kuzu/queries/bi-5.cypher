@@ -1,4 +1,4 @@
-MATCH (tag:Tag {name: $tag})<-[:HAS_TAG]-(message:Message)-[:HAS_CREATOR]->(person:Person)
+MATCH (tag:Tag {name: $tag})<-[:HAS_TAG]-(message:Post:Comment)-[:HAS_CREATOR]->(person:Person)
 OPTIONAL MATCH (message)<-[likes:LIKES]-(:Person)
 WITH person, message, count(likes) AS likeCount
 OPTIONAL MATCH (message)<-[:REPLY_OF]-(reply:Comment)
@@ -14,3 +14,5 @@ ORDER BY
   score DESC,
   person.id ASC
 LIMIT 100
+
+// nested agg

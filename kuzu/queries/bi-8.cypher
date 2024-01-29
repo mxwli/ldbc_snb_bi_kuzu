@@ -7,25 +7,32 @@ OPTIONAL MATCH (tag)<-[:HAS_TAG]-(message:Post:Comment)-[:HAS_CREATOR]->(person:
            AND message.creationDate < $endDate
 WITH tag, interestedPersons, interestedPersons + collect(person) AS persons
 UNWIND persons AS person
+MATCH (person1:Person) WHERE person1.id = person.id
+WITH tag, interestedPersons, persons, person, person1
 WITH DISTINCT tag, person
 WITH
   tag,
   person,
-  100 * size([(tag)<-[interest:HAS_INTEREST]-(person) | interest]) + size([(tag)<-[:HAS_TAG]-(message:Post:Comment)-[:HAS_CREATOR]->(person) WHERE $startDate < message.creationDate AND message.creationDate < $endDate | message])
+  100 * COUNT { MATCH (tag)<-[interest:HAS_INTEREST]-(person1) } + COUNT { MATCH (tag)<-[:HAS_TAG]-(message:Post:Comment)-[:HAS_CREATOR]->(person1) WHERE $startDate < message.creationDate AND message.creationDate < $endDate }
   AS score
-OPTIONAL MATCH (person)-[:KNOWS]-(friend)
+OPTIONAL MATCH (person1)-[:KNOWS]-(friend)
 
 
 WITH
   person,
   score,
-  100 * size([(tag)<-[interest:HAS_INTEREST]-(friend) | interest]) + size([(tag)<-[:HAS_TAG]-(message:Post:Comment)-[:HAS_CREATOR]->(friend) WHERE $startDate < message.creationDate AND message.creationDate < $endDate | message])
+  100 * count { match (tag)<-[interest:HAS_INTEREST]-(friend) } + COUNT { MATCH (tag)<-[:HAS_TAG]-(message:Post:Comment)-[:HAS_CREATOR]->(friend) WHERE $startDate < message.creationDate AND message.creationDate < $endDate }
   AS friendScore
-RETURN
-  person.id,
+WITH
+  person.id AS pid,
   score,
-  sum(friendScore) AS friendsScore
+  sum(friendScore) AS friendsScore,
+  score + sum(friendScore) as order_col1
+RETURN
+  pid,
+  score,
+  friendsScore
 ORDER BY
-  score + friendsScore DESC,
-  person.id ASC
+  order_col1 DESC,
+  pid ASC
 LIMIT 100
