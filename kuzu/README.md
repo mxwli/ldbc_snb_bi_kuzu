@@ -11,3 +11,7 @@ Project setup instructions:
 
 output can be found in `output/` directory. 
 python virtual environment is set up and dependencies are installed automatically.
+
+The current timeout threshold for each query is 100 seconds.
+
+

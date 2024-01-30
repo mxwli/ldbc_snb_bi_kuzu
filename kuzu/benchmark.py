@@ -57,7 +57,7 @@ def run_batch_updates(connection, data_dir, batch_date, batch_type, insert_entit
 
 
 if __name__ == '__main__':
-    query_variants = ["1", "2a", "2b", "3", "6", "7", "11", "12", "14a", "14b", "18"]
+    query_variants = ["1", "2a", "2b", "3", "7", "11", "12", "14a", "14b", "18"]
 
     database = kuzu.Database('database/')
     connection = kuzu.Connection(database)
