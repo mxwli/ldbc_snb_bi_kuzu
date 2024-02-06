@@ -15,3 +15,4 @@ python virtual environment is set up and dependencies are installed automaticall
 The current timeout threshold for each query is 100 seconds.
 
 
+note: remaining BI queries can be found in https://github.com/maxdemarzi/benchmarks/tree/master/src/test/scala/theirs

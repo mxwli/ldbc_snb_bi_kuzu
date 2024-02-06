@@ -2,8 +2,6 @@ import kuzu
 import sys
 
 # usage: python3 load-table.py <tablename> <table-type> <csv files>
-# will reorder the csv to fit for kuzu if the table is a relation
-
 
 tableName, tableType = sys.argv[1:3]
 csvFiles = sys.argv[3:]
