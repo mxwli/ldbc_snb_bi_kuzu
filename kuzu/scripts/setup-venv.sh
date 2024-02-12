@@ -9,6 +9,6 @@ python3 -m venv venv
 
 source venv/bin/activate
 
-pip install --pre kuzu
+pip install kuzu==0.2.0
 pip install pandas
 pip install pyarrow
